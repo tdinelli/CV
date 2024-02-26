@@ -1,0 +1,13 @@
+# Specific file extensions
+*.aux
+*.log
+*.out
+*.pdf
+*.dvi
+*.fdb_latexmk
+*.fls
+
+
+# Specific files
+.DS_Store
+curriculum-old/
