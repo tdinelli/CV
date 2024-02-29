@@ -6,6 +6,10 @@
 *.dvi
 *.fdb_latexmk
 *.fls
+*.bbl
+*.bcf
+*.blg
+*.xml
 
 # Specific files
 .DS_Store
