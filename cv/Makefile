@@ -15,7 +15,7 @@ $(MAIN:.tex=.pdf): $(MAIN) $(wildcard $(SRC_DIR)/*.tex) $(STYLE)
 
 # Clean
 clean:
-	rm -f *.aux *.log *.out *.toc *.dvi *.fdb_latexmk *.fls
+	rm -f *.aux *.log *.out *.toc *.dvi *.fdb_latexmk *.fls *.bbl *.bcf *.blg *.run.xml
 
 # All clean
 cleanall: clean

@@ -43,7 +43,10 @@
 \sectiontitle{Teaching Experience}
 \input{sections/Teaching.tex}
 
-\ifx\nopubs\undefined
+\newif\ifshowpubs
+\showpubstrue % Comment out this line to omit the publications sections
+
+\ifshowpubs
 % Publications
 \sectiontitle{Publications}
 \input{sections/Publications.tex}

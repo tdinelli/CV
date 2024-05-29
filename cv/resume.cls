@@ -17,13 +17,12 @@
 \RequirePackage{xcolor} % To color text
 \RequirePackage{graphicx} % To include graphics
 \RequirePackage{etaremune} % To do reverse ordering enumerations
-% Todo add explanation
-\RequirePackage[normalem]{ulem}
-\RequirePackage[style=iso]{datetime2}
-\RequirePackage{lastpage}
-\RequirePackage{fancyhdr}
+\RequirePackage[style=iso]{datetime2} % Display the date
+\RequirePackage{lastpage} % Page numbering
+\RequirePackage{fancyhdr} % Custome header and footer
 
-\RequirePackage[backend=biber, sorting=none, defernumbers=true, url=false, maxbibnames=99]{biblatex}
+% Bibliography
+\RequirePackage[backend=biber, sorting=ydnt, url=false, maxbibnames=99, defernumbers=true]{biblatex}
 \addbibresource{publications.bib}
 
 % Set page margins
@@ -66,7 +65,7 @@
     colorlinks=false, % Default for bordered links
     linkbordercolor=blue, % Color for internal links
     filebordercolor=magenta, % Color for file links
-    urlbordercolor=cyan, % Color for URLs
+    urlbordercolor=red, % Color for URLs
     pdftitle={CV}, % PDF title
     pdfpagemode=FullScreen, % Open in full screen mode
 }
@@ -80,7 +79,6 @@
 \cfoot{}
 \rfoot{\thepage\ of \pageref*{LastPage}}
 \renewcommand{\headrulewidth}{0.pt}
-\endinput % End of the class file
 
 % Annotate my name in bibliography
 \renewcommand*{\mkbibnamegiven}[1]{%
@@ -91,3 +89,13 @@
 \ifitemannotation{highlight}
 {\underline{\textbf{#1}}}
 {#1}}
+
+% Define the bibliography environment and print it with reverse ordering for the numbers
+\defbibenvironment{bibliography}
+   {
+      \renewcommand\labelenumi{\theenumi.}
+      \begin{etaremune}}
+   {\end{etaremune}}
+   {\item}
+
+\endinput % End of the class file
