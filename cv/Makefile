@@ -1,8 +1,6 @@
 # Makefile for LaTeX project
 
 # Variables
-# TEX = pdflatex
-# TEX = lualatex
 TEX = latexmk
 MAIN = main.tex
 SRC_DIR = sections

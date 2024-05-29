@@ -1,97 +1,77 @@
-\let\nofiles\relax % This is because res says to not emit aux files,
-                   % but lastpage needs aux files.
-\documentclass[margin,line]{resume}
-\usepackage[colorlinks=true]{hyperref}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{microtype}
-\usepackage{fourier-orns}
-\usepackage{amsmath,amssymb}
-\usepackage{lastpage}
-\usepackage{fancyhdr}
-\usepackage{etaremune}
+\documentclass{resume}
 
-\usepackage[normalem]{ulem}
-\usepackage[style=iso]{datetime2}
-
-% Fix il meno TODO
-\DeclareUnicodeCharacter{2212}{-}
-
-\oddsidemargin -.5in
-\evensidemargin -.5in
-\voffset -25pt
-% \topmargin -.2in
-\headsep 25pt
-\textwidth=6.0in
-\textheight=8.9in
-\itemsep=0in
-\parsep=0in
-
-% Headings
-\pagestyle{fancy}
-\lhead{Timoteo Dinelli --- Curriculum Vitae (as of \today)}
-\chead{}
-\rhead{\thepage\ of \pageref*{LastPage}}
-\lfoot{}
-\cfoot{}
-\rfoot{}
-\renewcommand{\headrulewidth}{0.4pt}
-% \renewcommand{\footrulewidth}{0.4pt}
+\newcommand{\polimi}{Politecnico di Milano}
+\newcommand{\myname}{Timoteo Dinelli}
 
 \begin{document}
 
-   \newcommand{\polimi}{Politecnico di Milano}
-   \newcommand{\myname}{Timoteo Dinelli}
-   \newlength{\mynamewidth}
-   \settowidth{\mynamewidth}{\namefont\myname}
+% Name
+\name{Timoteo Dinelli}
 
-   \name{\hspace*{0.5\textwidth}\hspace{-0.5\mynamewidth} \myname \vspace*{.1in}}
+% Contact Informations
+\thispagestyle{empty} % No header on the first page
+\sectiontitle{Contact Informations}
+\input{sections/GeneralContacts.tex}
 
-   % On the first page, have no header.
-   \thispagestyle{empty}
+% Citizenship
+% \section{\sc Citizenship}
+% Italy
 
-   \begin{resume}
+% Research Interests
+\sectiontitle{Research Interests}
+\input{sections/ResearchInterests.tex}
 
-      \input{sections/GeneralContacts.tex}
+% Education
+\sectiontitle{Education}
+\input{sections/Education.tex}
 
-      % \section{\sc Citizenship}
-      % Italy
+% Visiting Experience
+\sectiontitle{Visting Positions}
+\input{sections/Visiting.tex}
 
-      \input{sections/ResearchInterests.tex}
+% Honors and Awards
+\sectiontitle{Honors and Awards}
+\begin{inline_entry}{Travel student fellowship. KAUST.}
+   Jeddah, Saudi Arabia \hfill 2023
+\end{inline_entry}
 
-      \input{sections/Education.tex}
+\begin{inline_entry}{PhD scholarship. Italian Ministry of Education (MIUR).}
+   Milano, Italy \hfill {2021}
+\end{inline_entry}
 
-      \input{sections/Visiting.tex}
+% Teaching Experience
+\sectiontitle{Teaching Experience}
+\input{sections/Teaching.tex}
 
-      \section{\sc Honors and Awards}
-      {\bf Travel student fellowship. KAUST.} Jeddah, Saudi Arabia \hfill {2023}\\
-      {\bf PhD scholarship. Italian Ministry of Education (MIUR).} Milano, Italy \hfill {2021}\\
+\ifx\nopubs\undefined
+% Publications
+\sectiontitle{Publications}
+\input{sections/Publications.tex}
+\else
+\fi
 
-      \input{sections/Teaching.tex}
+% Conferences and Presentations
+\sectiontitle{Conferences and Presentations}
+\input{sections/Talks.tex}
 
-      \ifx\nopubs\undefined
-      \input{sections/Publications.tex}
-      \else
-      \fi
+% Professional Activities, Outreach, and Service
+\sectiontitle{Professional Activities, Outreach, and Service}
+\input{sections/Activities.tex}
 
-      \input{sections/Talks.tex}
+% Mentoring and Supervision
+\sectiontitle{Mentoring/ Supervision}
+\input{sections/MentoringSupervision.tex}
 
-      \input{sections/Activities.tex}
-      \vspace{1em}
-      \input{sections/MentoringSupervision.tex}
+% Computer Skills
+\sectiontitle{Computer Skills}
+\input{sections/Computer.tex}
 
-      \input{sections/Computer.tex}
-      % \vspace{1em}
-      \input{sections/ContactLinks.tex}
+% Contact Links
+\sectiontitle{Addition Contact Links}
+\input{sections/ContactLinks.tex}
 
-      \input{sections/References.tex}
+% References
+\sectiontitle{References}
+\input{sections/References.tex}
 
-   \end{resume}
 \end{document}
-
-% Added to improve page breaks
-% \vspace{-1em}
-% \vspace{1em}
-% Twiddle this for spacing
-% \newpage
-% \newpage{}

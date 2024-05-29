@@ -1,0 +1,98 @@
+\let\nofiles\relax % This is because res says to not emit aux files,
+                   % but lastpage needs aux files.
+\documentclass[margin,line]{resume}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{fourier-orns}
+\usepackage{amsmath,amssymb}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage{etaremune}
+
+\usepackage[normalem]{ulem}
+\usepackage[style=iso]{datetime2}
+
+% Fix il meno TODO
+\DeclareUnicodeCharacter{2212}{-}
+
+\oddsidemargin -.5in
+\evensidemargin -.5in
+\voffset -25pt
+% \topmargin -.2in
+\headsep 25pt
+\textwidth=6.0in
+\textheight=8.9in
+\itemsep=0in
+\parsep=0in
+
+% Headings
+\pagestyle{fancy}
+\lhead{Timoteo Dinelli --- Curriculum Vitae (as of \today)}
+\chead{}
+\rhead{\thepage\ of \pageref*{LastPage}}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+% \renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+   \newcommand{\polimi}{Politecnico di Milano}
+   \newcommand{\myname}{Timoteo Dinelli}
+   \newlength{\mynamewidth}
+   \settowidth{\mynamewidth}{\namefont\myname}
+
+   \name{\hspace*{0.5\textwidth}\hspace{-0.5\mynamewidth} \myname \vspace*{.1in}}
+
+   % On the first page, have no header.
+   \thispagestyle{empty}
+
+   \begin{resume}
+
+      \input{sections/GeneralContacts.tex}
+
+      % \section{\sc Citizenship}
+      % Italy
+
+      \input{sections/ResearchInterests.tex}
+
+      \input{sections/Education.tex}
+
+      \input{sections/Visiting.tex}
+
+      \section{\sc Honors and Awards}
+      {\bf Travel student fellowship. KAUST.} Jeddah, Saudi Arabia \hfill {2023}\\
+      {\bf PhD scholarship. Italian Ministry of Education (MIUR).} Milano, Italy \hfill {2021}\\
+
+      \input{sections/Teaching.tex}
+
+      \ifx\nopubs\undefined
+      \input{sections/Publications.tex}
+      \else
+      \fi
+
+      \input{sections/Talks.tex}
+
+      \input{sections/Activities.tex}
+      \vspace{1em}
+      \input{sections/MentoringSupervision.tex}
+
+      \input{sections/Computer.tex}
+      % \vspace{1em}
+      \input{sections/ContactLinks.tex}
+
+      \input{sections/References.tex}
+
+   \end{resume}
+\end{document}
+
+% Added to improve page breaks
+% \vspace{-1em}
+% \vspace{1em}
+% Twiddle this for spacing
+% \newpage
+% \newpage{}
