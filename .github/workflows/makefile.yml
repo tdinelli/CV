@@ -1,0 +1,34 @@
+name: LaTeX CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up LaTeX environment
+      run: sudo apt-get update && sudo apt-get install -y texlive-full latexmk
+
+    - name: Compile LaTeX document
+      run: |
+        cd cv
+        make
+
+    - name: Upload PDF
+      uses: actions/upload-artifact@v3
+      with:
+        name: CV PDF
+        path: cv/build/main.pdf
+
+    - name: Clean up
+      run: |
+        cd cv
+        make cleanall
