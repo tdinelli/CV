@@ -17,7 +17,7 @@ jobs:
     - name: Set up LaTeX environment
       run: |
         sudo apt-get update
-        sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra latexmk
+        sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra biber latexmk
 
     - name: Compile LaTeX document
       run: |
