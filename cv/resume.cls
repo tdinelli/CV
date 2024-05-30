@@ -7,6 +7,10 @@
 \LoadClass[a4paper,10pt]{article}
 
 % Load necessary packages
+\RequirePackage[T1]{fontenc} % Font stuff
+%\RequirePackage{tgbonum} % Font stuff
+\RequirePackage{helvet}
+
 \RequirePackage[utf8]{inputenc} % For UTF-8 encoding
 \RequirePackage{geometry} % To set the page margins
 \RequirePackage{amsmath, amssymb} % For math symbols
