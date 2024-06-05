@@ -96,9 +96,7 @@
 
 % Define the bibliography environment and print it with reverse ordering for the numbers
 \defbibenvironment{bibliography}
-   {
-      \renewcommand\labelenumi{\theenumi.}
-      \begin{etaremune}}
+   {\renewcommand\labelenumi{\theenumi.}\begin{etaremune}}
    {\end{etaremune}}
    {\item}
 
