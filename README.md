@@ -9,4 +9,3 @@ mainly:
 
 To see an example:
 - https://tdinelli.github.io/static/cv.pdf
-- [cv/build/main.pdf](CV.pdf)

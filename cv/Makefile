@@ -1,8 +1,8 @@
-# Taken from and modified by me
-# https://gist.github.com/xu-cheng/6259575
+# Taken from https://gist.github.com/xu-cheng/6259575
+# and modified by me
 #####################################################
 # LaTeX Makefile
-# Author: Xu Cheng
+# Author: Xu Cheng and Timote Dinelli
 #
 # This Makefile is used to compile LaTeX documents
 # Included is basic support for BibTeX bibliographies
@@ -56,7 +56,8 @@ clean:
 			$(OUTPUT_DIR)/*.log $(OUTPUT_DIR)/*.lot $(OUTPUT_DIR)/*.maf $(OUTPUT_DIR)/*.mtc \
 			$(OUTPUT_DIR)/*.mtc0 $(OUTPUT_DIR)/*.nav $(OUTPUT_DIR)/*.nlo $(OUTPUT_DIR)/*.out \
 			$(OUTPUT_DIR)/*.pdfsync $(OUTPUT_DIR)/*.pyg $(OUTPUT_DIR)/*.snm $(OUTPUT_DIR)/*.synctex.gz \
-			$(OUTPUT_DIR)/*.thm $(OUTPUT_DIR)/*.toc $(OUTPUT_DIR)/*.vrb $(OUTPUT_DIR)/*.xdy $(OUTPUT_DIR)/*.tdo
+			$(OUTPUT_DIR)/*.thm $(OUTPUT_DIR)/*.toc $(OUTPUT_DIR)/*.vrb $(OUTPUT_DIR)/*.xdy $(OUTPUT_DIR)/*.tdo \
+			$(OUTPUT_DIR)/*.bcf $(OUTPUT_DIR)/*.xml
 	-@echo "clean project done."
 
 # Clean up all files, including the main PDF
@@ -69,6 +70,7 @@ reallyclean:
 			$(OUTPUT_DIR)/*.mtc0 $(OUTPUT_DIR)/*.nav $(OUTPUT_DIR)/*.nlo $(OUTPUT_DIR)/*.out \
 			$(OUTPUT_DIR)/*.pdfsync $(OUTPUT_DIR)/*.pyg $(OUTPUT_DIR)/*.snm $(OUTPUT_DIR)/*.synctex.gz \
 			$(OUTPUT_DIR)/*.thm $(OUTPUT_DIR)/*.toc $(OUTPUT_DIR)/*.vrb $(OUTPUT_DIR)/*.xdy $(OUTPUT_DIR)/*.tdo \
+			$(OUTPUT_DIR)/*.bcf $(OUTPUT_DIR)/*.xml \
 			$(OUTPUT_DIR)/$(TARGET).pdf
 	-@echo "really clean project done."
 
