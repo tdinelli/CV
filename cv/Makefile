@@ -1,15 +1,6 @@
-# Taken from https://gist.github.com/xu-cheng/6259575
-# and modified by me
-#####################################################
-# LaTeX Makefile
-# Author: Xu Cheng and Timote Dinelli
-#
-# This Makefile is used to compile LaTeX documents
-# Included is basic support for BibTeX bibliographies
-#
-# This Makefile is written based on below document:
-# http://www.physics.wm.edu/~norman/thesis/Makefile
-#####################################################
+# Inspired by: http://www.physics.wm.edu/~norman/thesis/Makefile
+# Taken from: https://gist.github.com/xu-cheng/6259575
+# Modified by me (Timoteo Dinelli)
 
 # Name of the main tex document (without .tex suffix)
 TARGET = main
@@ -49,29 +40,14 @@ default all: $(OUTPUT_DIR)/$(TARGET).pdf
 
 # Clean up auxiliary files
 clean:
-	-$(RM) $(OUTPUT_DIR)/*.acn $(OUTPUT_DIR)/*.acr $(OUTPUT_DIR)/*.alg $(OUTPUT_DIR)/*.aux \
-			$(OUTPUT_DIR)/*.bbl $(OUTPUT_DIR)/*.blg $(OUTPUT_DIR)/*.dvi $(OUTPUT_DIR)/*.fdb_latexmk \
-			$(OUTPUT_DIR)/*.glg $(OUTPUT_DIR)/*.glo $(OUTPUT_DIR)/*.gls $(OUTPUT_DIR)/*.idx \
-			$(OUTPUT_DIR)/*.ilg $(OUTPUT_DIR)/*.ind $(OUTPUT_DIR)/*.ist $(OUTPUT_DIR)/*.lof \
-			$(OUTPUT_DIR)/*.log $(OUTPUT_DIR)/*.lot $(OUTPUT_DIR)/*.maf $(OUTPUT_DIR)/*.mtc \
-			$(OUTPUT_DIR)/*.mtc0 $(OUTPUT_DIR)/*.nav $(OUTPUT_DIR)/*.nlo $(OUTPUT_DIR)/*.out \
-			$(OUTPUT_DIR)/*.pdfsync $(OUTPUT_DIR)/*.pyg $(OUTPUT_DIR)/*.snm $(OUTPUT_DIR)/*.synctex.gz \
-			$(OUTPUT_DIR)/*.thm $(OUTPUT_DIR)/*.toc $(OUTPUT_DIR)/*.vrb $(OUTPUT_DIR)/*.xdy $(OUTPUT_DIR)/*.tdo \
-			$(OUTPUT_DIR)/*.bcf $(OUTPUT_DIR)/*.xml
+	-$(RM) $(OUTPUT_DIR)/*.bcf $(OUTPUT_DIR)/*.blg $(OUTPUT_DIR)/*.log \
+	       $(OUTPUT_DIR)/*.out $(OUTPUT_DIR)/*.xml
 	-@echo "clean project done."
 
 # Clean up all files, including the main PDF
-reallyclean:
-	-$(RM) $(OUTPUT_DIR)/*.acn $(OUTPUT_DIR)/*.acr $(OUTPUT_DIR)/*.alg $(OUTPUT_DIR)/*.aux \
-			$(OUTPUT_DIR)/*.bbl $(OUTPUT_DIR)/*.blg $(OUTPUT_DIR)/*.dvi $(OUTPUT_DIR)/*.fdb_latexmk \
-			$(OUTPUT_DIR)/*.glg $(OUTPUT_DIR)/*.glo $(OUTPUT_DIR)/*.gls $(OUTPUT_DIR)/*.idx \
-			$(OUTPUT_DIR)/*.ilg $(OUTPUT_DIR)/*.ind $(OUTPUT_DIR)/*.ist $(OUTPUT_DIR)/*.lof \
-			$(OUTPUT_DIR)/*.log $(OUTPUT_DIR)/*.lot $(OUTPUT_DIR)/*.maf $(OUTPUT_DIR)/*.mtc \
-			$(OUTPUT_DIR)/*.mtc0 $(OUTPUT_DIR)/*.nav $(OUTPUT_DIR)/*.nlo $(OUTPUT_DIR)/*.out \
-			$(OUTPUT_DIR)/*.pdfsync $(OUTPUT_DIR)/*.pyg $(OUTPUT_DIR)/*.snm $(OUTPUT_DIR)/*.synctex.gz \
-			$(OUTPUT_DIR)/*.thm $(OUTPUT_DIR)/*.toc $(OUTPUT_DIR)/*.vrb $(OUTPUT_DIR)/*.xdy $(OUTPUT_DIR)/*.tdo \
-			$(OUTPUT_DIR)/*.bcf $(OUTPUT_DIR)/*.xml \
-			$(OUTPUT_DIR)/$(TARGET).pdf
+cleanall:
+	-$(RM) $(OUTPUT_DIR)/*.bbl $(OUTPUT_DIR)/*.bcf $(OUTPUT_DIR)/*.blg $(OUTPUT_DIR)/*.log \
+	       $(OUTPUT_DIR)/*.out $(OUTPUT_DIR)/*.xml $(OUTPUT_DIR)/$(TARGET).pdf
 	-@echo "really clean project done."
 
 # Open the generated PDF

@@ -24,10 +24,10 @@
 \RequirePackage[style=iso]{datetime2} % Display the date
 \RequirePackage{lastpage} % Page numbering
 \RequirePackage{fancyhdr} % Custome header and footer
+\RequirePackage{soul} % Underline
 
 % Bibliography
 \RequirePackage[backend=biber, sorting=ydnt, url=false, maxbibnames=99, defernumbers=true]{biblatex}
-\addbibresource{publications.bib}
 
 % Set page margins
 \geometry{left=1in, right=1in, top=1in, bottom=1in}
