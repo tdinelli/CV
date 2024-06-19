@@ -31,7 +31,7 @@ else
 endif
 
 # Program Definitions
-TEX    = lualatex -shell-escape -8bit
+TEX    = latexmk -lualatex
 BIBTEX = biber
 RM     = $(if $(filter $(OS_TYPE),Windows),del /f /q ,rm -f)
 
@@ -41,48 +41,34 @@ default all: $(OUTPUT_DIR)/$(TARGET).pdf
 # Clean up auxiliary files
 clean:
 	-$(RM) $(OUTPUT_DIR)/*.bcf $(OUTPUT_DIR)/*.blg $(OUTPUT_DIR)/*.log \
-	       $(OUTPUT_DIR)/*.out $(OUTPUT_DIR)/*.xml
+	       $(OUTPUT_DIR)/*.out $(OUTPUT_DIR)/*.xml $(OUTPUT_DIR)/*.aux \
+		   $(OUTPUT_DIR)/*.fdb_latexmk $(OUTPUT_DIR)/*.fls
 	-@echo "clean project done."
 
 # Clean up all files, including the main PDF
 cleanall:
 	-$(RM) $(OUTPUT_DIR)/*.bbl $(OUTPUT_DIR)/*.bcf $(OUTPUT_DIR)/*.blg $(OUTPUT_DIR)/*.log \
-	       $(OUTPUT_DIR)/*.out $(OUTPUT_DIR)/*.xml $(OUTPUT_DIR)/$(TARGET).pdf
+	       $(OUTPUT_DIR)/*.out $(OUTPUT_DIR)/*.xml $(OUTPUT_DIR)/*.aux \
+		   $(OUTPUT_DIR)/*.fdb_latexmk $(OUTPUT_DIR)/*.fls $(OUTPUT_DIR)/$(TARGET).pdf
 	-@echo "really clean project done."
 
 # Open the generated PDF
 open:
-	-@echo "Open $(OUTPUT_DIR)/$(TARGET).pdf"
+	@echo "Open $(OUTPUT_DIR)/$(TARGET).pdf"
 ifeq ($(OS_TYPE),Windows)
-	-@start /b cmd /c "$(OUTPUT_DIR)/$(TARGET).pdf"
+	@start /b cmd /c "$(OUTPUT_DIR)/$(TARGET).pdf"
+else ifeq ($(OS_TYPE),Cygwin)
+	@cygstart $(OUTPUT_DIR)/$(TARGET).pdf
+else ifeq ($(OS_TYPE),Darwin)
+	@open $(OUTPUT_DIR)/$(TARGET).pdf
 else
-ifeq ($(OS_TYPE),Cygwin)
-	-@cygstart $(OUTPUT_DIR)/$(TARGET).pdf
-else
-	-$(OUTPUT_DIR)/$(TARGET).pdf &
-endif
+	@xdg-open $(OUTPUT_DIR)/$(TARGET).pdf &
 endif
 
-# To generate a .pdf file from a .tex file
-# Note: LaTeX must be run multiple times to get the proper
-#       cross-referencing from the \ref and \cite commands
-#       and to generate correct hyperref and contents.
+# Compile the project
 $(OUTPUT_DIR)/%.pdf: %.tex $(BBLSRC)
-	@echo "======================== TEX -> PDF ============================"
-	@$(TEX) -output-directory=$(OUTPUT_DIR) $<
-	@$(TEX) -output-directory=$(OUTPUT_DIR) $<
-
-# To generate a .bbl file from a .aux file
-$(OUTPUT_DIR)/%.bbl: $(OUTPUT_DIR)/%.aux
-ifneq ($(strip $(BIBSRC)),)
-	@echo "======================== AUX -> BBL ============================"
-	@$(BIBTEX) -output-directory=$(OUTPUT_DIR) $(basename $*)
-endif
-
-# To generate a .aux file from a .tex file
-$(OUTPUT_DIR)/%.aux: %.tex
-	@echo "======================== TEX -> AUX ============================"
-	@$(TEX) -output-directory=$(OUTPUT_DIR) $<
+	@echo "======================== BUILDING PROJECT ============================"
+	@$(TEX) -output-directory=$(OUTPUT_DIR) $(MAIN)
 
 # Dependencies
 # DO NOT DELETE
