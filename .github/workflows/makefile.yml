@@ -33,4 +33,4 @@ jobs:
     - name: Clean up
       run: |
         cd cv
-        make reallyclean
+        make cleanall
