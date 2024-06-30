@@ -83,7 +83,7 @@ ifeq ($(NOMENCLATURE),ON)
 endif
 
 # Dependencies
-$(TARGET).tex: $(TEXSRC)
+# $(TARGET).tex: $(TEXSRC)
 $(OUTPUT_DIR)/$(TARGET).pdf: $(TEXSRC) $(BBLSRC) $(SECTIONSRC)
 $(OUTPUT_DIR)/$(TARGET).bbl: $(TEXSRC) $(BIBSRC)
 
