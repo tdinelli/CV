@@ -1,15 +1,6 @@
-# Specific file extensions
-*.aux
-*.log
-*.out
-# *.pdf
-*.dvi
-*.fdb_latexmk
-*.fls
-*.bbl
-*.bcf
-*.blg
-*.xml
-
 # Specific files
+*.aux
 .DS_Store
+
+# Folders
+build
