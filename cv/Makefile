@@ -84,7 +84,7 @@ endif
 
 # Dependencies
 # $(TARGET).tex: $(TEXSRC)
-$(OUTPUT_DIR)/$(TARGET).pdf: $(TEXSRC) $(BBLSRC) $(SECTIONSRC)
+$(OUTPUT_DIR)/$(TARGET).pdf: $(TEXSRC) $(BBLSRC) $(SECTIONSRC) resume.cls
 $(OUTPUT_DIR)/$(TARGET).bbl: $(TEXSRC) $(BIBSRC)
 
 .PHONY: default all clean cleanall open
