@@ -90,4 +90,19 @@
 \sectiontitle{References}
 \input{sections/References.tex}
 
+\newif\ifshowauth
+\showauthtrue % Comment out this line to omit the authorizations section
+
+\ifshowauth
+\sectiontitle{Authorizations}
+\begin{enumerate}
+   \item Autorizzo al trattamento dati ai sensi del GDPR 2016/679 del 27 aprile 2016
+      (Regolamento Europeo relativo alla protezione delle persone fisiche per quanto
+      riguarda il trattamento dei dati personali);
+   \item Autorizzo la pubblicazione del Curriculum Vitae sul sito istituzionale del
+      Politecnico di Milano (sez. Amministrazione Trasparente) in ottemperanza al D. Lgs
+      n. 33 del 14 marzo 2013 (e s.m.i.).
+\end{enumerate}
+\else
+\fi
 \end{document}
