@@ -10,24 +10,26 @@
 \nocite{*}
 \ifshowpubsummary
 \subsectiontitle{Publication Summary}
-   \begin{minipage}[t]{0.75\textwidth}
-      According to Google Scholar (as of \today).
-   \end{minipage}
-   \begin{minipage}[t]{0.18\textwidth}
-      \begin{flushright}
-         {\bf Citations}: 32
-         {\bf H-index}: 2
-         {\bf i10-index}: 1
-      \end{flushright}
-   \end{minipage}
-   % As of \today , according to Google Scholar.
-   % {\bf Total number of citations}: 32.
-   % {\bf h-index}: 2.
-   % {\bf i10-index}: 1.
-   % {\bf Top five cited ---}
-   % Citation counts from Google Scholar.
-   % \begin{enumerate}
-   % \end{enumerate}
+    \begin{itemize}
+        \item [ ]
+            \begin{minipage}[t]{0.75\textwidth}
+                According to Google Scholar (as of \today).
+            \end{minipage}
+            \begin{minipage}[t]{0.18\textwidth}
+            \begin{flushright}
+                {\bf Citations}: 32
+                {\bf H-index}: 2
+                {\bf i10-index}: 1
+            \end{flushright}
+            \end{minipage}
+        \item [ ]
+            {\bf Top five cited ---}
+            Citation counts from Google Scholar.
+            \begin{enumerate}
+                \item \fullcite{ramalli_automatic_2023}
+                \item \fullcite{pegurri_coupling_2024}
+            \end{enumerate}
+    \end{itemize}
 \else % don't show pub summary
 \fi
 
@@ -38,7 +40,7 @@
 \fi
 
 \ifshowacceptedpubs
-\subsectiontitle{Submitted Publications}
+\subsectiontitle{Accepted Publications}
 \printbibliography[keyword=accepted, heading=none]
 \else % don't show acceptedpubs
 \fi
