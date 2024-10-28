@@ -1,5 +1,5 @@
 \newif\ifshowpubsummary
-% \showpubsummarytrue % Comment out this line to omit the publication summary
+\showpubsummarytrue % Comment out this line to omit the publication summary
 
 \newif\ifshowsubmittedpubs
 % \showsubmittedpubstrue % Comment out this line to omit the submitted publications list
@@ -10,11 +10,21 @@
 \nocite{*}
 \ifshowpubsummary
 \subsectiontitle{Publication Summary}
-   % This is still TODO
-   {\bf h-index ---}
-   As of 20-02-2024: 1 (according to Google Scholar).
-
-   {\bf Top five cited ---}
+   \begin{minipage}[t]{0.75\textwidth}
+      According to Google Scholar (as of \today).
+   \end{minipage}
+   \begin{minipage}[t]{0.18\textwidth}
+      \begin{flushright}
+         {\bf Citations}: 32
+         {\bf H-index}: 2
+         {\bf i10-index}: 1
+      \end{flushright}
+   \end{minipage}
+   % As of \today , according to Google Scholar.
+   % {\bf Total number of citations}: 32.
+   % {\bf h-index}: 2.
+   % {\bf i10-index}: 1.
+   % {\bf Top five cited ---}
    % Citation counts from Google Scholar.
    % \begin{enumerate}
    % \end{enumerate}
