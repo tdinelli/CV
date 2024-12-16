@@ -87,7 +87,7 @@
 \newcommand{\name}[1]{%
     \begingroup
     % \centering
-    {\Huge\scshape #1\par}
+    {\Huge\scshape \textbf{#1}\par}
     \vspace{1em}
     \endgroup
 }
