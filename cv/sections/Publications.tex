@@ -10,23 +10,23 @@
 \nocite{*}
 \ifshowpubsummary
 \subsectiontitle{Publication Summary}
-    \begin{minipage}[t]{0.75\textwidth}
-        According to Google Scholar (as of \today).
-    \end{minipage}
-    \begin{minipage}[t]{0.18\textwidth}
-        \begin{flushright}
-            {\bf Citations}: 32
-            {\bf H-index}: 2
-            {\bf i10-index}: 1
-        \end{flushright}
-    \end{minipage}
+   \begin{minipage}[t]{0.6\textwidth}
+      According to Google Scholar (as of \today).
+   \end{minipage}%
+   \begin{minipage}[t]{0.4\textwidth}
+      \begin{flushright}
+         \textbf{Citations:} 37\\
+         \textbf{h-index:} 2\\
+         \textbf{i10-index:} 1
+      \end{flushright}
+   \end{minipage}
 
-    % {\bf Top five cited ---}
-    % Citation counts from Google Scholar.
-    % \begin{enumerate}
-    %     \item \fullcite{ramalli_automatic_2023}
-    %     \item \fullcite{pegurri_coupling_2024}
-    % \end{enumerate}
+   % {\bf Top five cited ---}
+   % Citation counts from Google Scholar.
+   % \begin{enumerate}
+   %     \item \fullcite{ramalli_automatic_2023}
+   %     \item \fullcite{pegurri_coupling_2024}
+   % \end{enumerate}
 \else % don't show pub summary
 \fi
 
@@ -42,5 +42,7 @@
 \else % don't show acceptedpubs
 \fi
 
-\subsectiontitle{Refereed Publications}
+\subsectiontitle{Refereed Publications \footnote{\hspace{.1cm} \textdagger \hspace{.1cm}
+Denotes equal contribution.}}
+% \normalfont{(\textsuperscript{\textdagger} Denotes equal contribution})}
 \printbibliography[keyword=refereed, heading=none]
