@@ -15,10 +15,11 @@
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage[
    colorlinks=true,
-   linkcolor=black,
-   linkbordercolor=red,
+   linkcolor=PineGreen,
+   linkbordercolor=PineGreen,
    filecolor=magenta,
-   urlcolor=blue,
+   urlcolor=PineGreen,
+   urlbordercolor=PineGreen,
    citecolor=blue
 ]{hyperref}
 \RequirePackage[shortlabels]{enumitem}
@@ -47,17 +48,18 @@
 % Create a command for the boxed title
 \newcommand{\boxedsection}[1]{%
    \begin{tcolorbox}[
-      colback=gray!15,
+      colback=gray!20,
       colframe=black,
       boxrule=1pt,
       width=\textwidth,
       arc=0mm,
       sharp corners,   % Added to ensure rectangular shape
-      top=2pt,         % Reduced top padding
-      bottom=2pt,      % Reduced bottom padding
+      top=1.3pt,         % Reduced top padding
+      bottom=1.3pt,      % Reduced bottom padding
       right=0pt,
+      left=0pt,
    ]
-   \noindent\textbf{#1}
+   \textbf{#1}
    \end{tcolorbox}%
 }
 % Format section titles
@@ -128,9 +130,9 @@
 \newenvironment{position}[3]{%
     \par\noindent
     \textbf{#1}, \textit{#2}\hfill\textbf{#3}
-    \vspace{0.15em}\par
+    \vspace{0.05em}\par
 }{%
-    \vspace{1em}
+    \vspace{0.5em}
 }
 
 % Header and footer setup
@@ -141,17 +143,25 @@
 \rfoot{\small\thepage/\pageref*{LastPage}}
 
 % Bibliography name highlighting
-\renewcommand*{\mkbibnamegiven}[1]{%
-    \ifitemannotation{highlight}
-        {\underline{\textbf{#1}}}
-        {#1}%
+% See here:
+% http://www.hansenlab.org/cv_bibliography_tex
+\renewcommand*{\mkbibnamegiven}[1]{
+   \ifitemannotation{highlight}
+   {\underline{\textbf{#1}}}
+   {#1}
 }
 
-\renewcommand*{\mkbibnamefamily}[1]{%
-    \ifitemannotation{highlight}
-        {\underline{\textbf{#1}}}
-        {#1}%
-}
+\renewcommand*{\mkbibnamefamily}[1]{
+   \ifitemannotation{highlight}
+     {\underline{\textbf{#1}}}
+     {#1}%
+   % \ifitemannotation{first}
+   %   {\textsuperscript{*}}
+   %   {}%
+   \ifitemannotation{equal}
+     {\textsuperscript{\textdagger}}
+     {}%
+}%%
 
 % Bibliography environment
 \defbibenvironment{bibliography}
