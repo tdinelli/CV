@@ -1,19 +1,18 @@
-# Name of the main tex document (without .tex suffix)
-TARGET = main
+# Main variables
+MAIN = main
+BUILD_DIR = build
 
-# Source Paths
-SRC_DIR = .
-BIB_DIR = .
-SECTION_DIR = ./sections
-OUTPUT_DIR = build
+# Create directory structure matching the source
+SUBDIRS = sections
 
-# Program Definitions
-TEX = latexmk -lualatex
-BIBTEX = biber
-MAKEINDEX = makeindex
+# Latexmk configuration
+LATEXMK = latexmk
+LATEXMK_FLAGS = -lualatex -bibtex -shell-escape -interaction=nonstopmode -file-line-error
+LATEXMK_OUTDIR = -output-directory=$(BUILD_DIR)
 
 # ==================================================================
 # =============== MODIFY BELOW JUST IF YOU KNOW WHAT YOU ARE DOING =
+
 # ==================================================================
 # OS detection
 ifeq ($(OS),Windows_NT)
@@ -25,66 +24,65 @@ ifeq ($(OS),Windows_NT)
 else
     OS_TYPE := $(shell uname -s)
 endif
-NOMENCL = nomencl.ist
-RM = $(if $(filter $(OS_TYPE),Windows),del /f /q ,rm -f)
 
-# Source Files
-TEXSRC = $(wildcard $(SRC_DIR)/*.tex)
-BIBSRC = $(wildcard $(BIB_DIR)/*.bib)
-SECTIONSRC = $(wildcard $(SECTION_DIR)/*.tex)
+# ==================================================================
+# Definition of the remove command based on the OS
+RM = $(if $(filter $(OS_TYPE),Windows),del /f /q ,rm)
 
-# If the BIBSRC is not empty, then we need to generate the bbl database
-ifneq ($(strip $(BIBSRC)),)
-    BBLSRC = $(OUTPUT_DIR)/$(TARGET).bbl
-endif
+# ==================================================================
+# TODO: Automatic files extraction using wildcard
+# TEXSRC = $(wildcard $(SRC_DIR)/*.tex)
+# BIBSRC = $(wildcard $(BIB_DIR)/*.bib)
+# SECTIONSRC = $(wildcard $(SECTION_DIR)/*.tex)
+# If the BIBSRC is not empty, then we need to generate the
+# bbl database
+# ifneq ($(strip $(BIBSRC)),)
+#     BBLSRC = $(BUILD_DIR)/$(TARGET).bbl
+# endif
 
-
+# ==================================================================
 # Default target
-default: all
+all: create_dirs $(BUILD_DIR)/$(MAIN).pdf
 
-all: $(OUTPUT_DIR)/$(TARGET).pdf
+# ==================================================================
+# Create necessary build subdirectories
+create_dirs:
+	mkdir -p $(BUILD_DIR)
+	cd $(BUILD_DIR) && mkdir -p $(SUBDIRS)
 
-# Clean up auxiliary files
+# ==================================================================
+# Main compilation rule
+$(BUILD_DIR)/$(MAIN).pdf: | create_dirs
+	$(LATEXMK) $(LATEXMK_FLAGS) $(LATEXMK_OUTDIR) $(MAIN)
+	cp $(BUILD_DIR)/$(MAIN).pdf .
+
+# ==================================================================
+# Clean all generated files
 clean:
-	-$(RM) $(OUTPUT_DIR)/*.bcf $(OUTPUT_DIR)/*.blg $(OUTPUT_DIR)/*.log \
-	       $(OUTPUT_DIR)/*.out $(OUTPUT_DIR)/*.xml $(OUTPUT_DIR)/*.aux \
-	       $(OUTPUT_DIR)/*.fdb_latexmk $(OUTPUT_DIR)/*.fls $(OUTPUT_DIR)/*.nlo \
-	       $(OUTPUT_DIR)/*.ilg $(OUTPUT_DIR)/*.nls $(OUTPUT_DIR)/*.toc \
-	       $(OUTPUT_DIR)/*.lof $(OUTPUT_DIR)/*.lot $(OUTPUT_DIR)/*.synctex.gz \
-		   $(OUTPUT_DIR)/*.spl
-	-@echo "Clean project done."
+	$(RM) -rf $(BUILD_DIR)
 
-# Clean up all files, including the main PDF
-cleanall: clean
-	-$(RM) $(OUTPUT_DIR)/*.bbl $(OUTPUT_DIR)/$(TARGET).pdf
-	-@echo "Really clean project done."
+# ==================================================================
+# Clean auxiliary files but keep PDF
+clean-aux:
+	$(LATEXMK) -c $(LATEXMK_OUTDIR) $(MAIN)
 
-# Open the generated PDF
+# ==================================================================
+# View PDF
 open:
-	@echo "Opening $(OUTPUT_DIR)/$(TARGET).pdf"
+	@echo "Opening $(BUILD_DIR)/$(MAIN).pdf"
 ifeq ($(OS_TYPE),Windows)
-	@start /b cmd /c "$(OUTPUT_DIR)/$(TARGET).pdf"
+	@start /b cmd /c "$(BUILD_DIR)/$(MAIN).pdf"
 else ifeq ($(OS_TYPE),Cygwin)
-	@cygstart $(OUTPUT_DIR)/$(TARGET).pdf
+	@cygstart $(BUILD_DIR)/$(MAIN).pdf
 else ifeq ($(OS_TYPE),Darwin)
-	@open $(OUTPUT_DIR)/$(TARGET).pdf
+	@open $(BUILD_DIR)/$(MAIN).pdf
 else
-	@xdg-open $(OUTPUT_DIR)/$(TARGET).pdf &
+	@xdg-open $(BUILD_DIR)/$(MAIN).pdf &
 endif
 
-# Compile the project
-$(OUTPUT_DIR)/%.pdf: %.tex $(BBLSRC) $(SECTIONSRC)
-	@[ -d $(OUTPUT_DIR) ] || mkdir -p $(OUTPUT_DIR)
-	@echo "======================== BUILDING PROJECT ============================"
-	@$(TEX) -output-directory=$(OUTPUT_DIR) $<
-ifeq ($(NOMENCLATURE),ON)
-	@$(MAKEINDEX) $(OUTPUT_DIR)/$(TARGET).nlo -s $(NOMENCL) -o $(OUTPUT_DIR)/$(TARGET).nls
-	@$(TEX) -output-directory=$(OUTPUT_DIR) $<
-endif
+# ==================================================================
+# Watch for changes and recompile
+watch:
+	$(LATEXMK) $(LATEXMK_FLAGS) $(LATEXMK_OUTDIR) -pvc $(MAIN)
 
-# Dependencies
-# $(TARGET).tex: $(TEXSRC)
-$(OUTPUT_DIR)/$(TARGET).pdf: $(TEXSRC) $(BBLSRC) $(SECTIONSRC) resume.cls
-$(OUTPUT_DIR)/$(TARGET).bbl: $(TEXSRC) $(BIBSRC)
-
-.PHONY: default all clean cleanall open
+.PHONY: all clean clean-aux view watch create_dirs
