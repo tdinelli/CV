@@ -9,40 +9,39 @@
 
 \nocite{*}
 \ifshowpubsummary
-\subsectiontitle{Publication Summary}
-   \begin{minipage}[t]{0.6\textwidth}
-      According to Google Scholar (as of \today).
-   \end{minipage}%
-   \begin{minipage}[t]{0.4\textwidth}
-      \begin{flushright}
-         \textbf{Citations:} 38\\
-         \textbf{h-index:} 2\\
-         \textbf{i10-index:} 1
-      \end{flushright}
-   \end{minipage}
+    \subsectiontitle{Publication Summary}
+    \begin{minipage}[t]{0.6\textwidth}
+        According to Google Scholar (as of \today).
+    \end{minipage}%
+    \begin{minipage}[t]{0.4\textwidth}
+        \begin{flushright}
+            \textbf{Citations:} 38\\
+            \textbf{h-index:} 2\\
+            \textbf{i10-index:} 1
+        \end{flushright}
+    \end{minipage}
 
-   % {\bf Top five cited ---}
-   % Citation counts from Google Scholar.
-   % \begin{enumerate}
-   %     \item \fullcite{ramalli_automatic_2023}
-   %     \item \fullcite{pegurri_coupling_2024}
-   % \end{enumerate}
+    % {\bf Top five cited ---}
+    % Citation counts from Google Scholar.
+    % \begin{enumerate}
+    %     \item \fullcite{ramalli_automatic_2023}
+    %     \item \fullcite{pegurri_coupling_2024}
+    % \end{enumerate}
 \else % don't show pub summary
 \fi
 
 \ifshowsubmittedpubs
-\subsectiontitle{Submitted Publications}
-\printbibliography[keyword=submitted, heading=none]
+    \subsectiontitle{Submitted Publications}
+    \printbibliography[keyword=submitted, heading=none]
 \else % don't show submittedpubs
 \fi
 
 \ifshowacceptedpubs
-\subsectiontitle{Accepted Publications}
-\printbibliography[keyword=accepted, heading=none]
+    \subsectiontitle{Accepted Publications}
+    \printbibliography[keyword=accepted, heading=none]
 \else % don't show acceptedpubs
 \fi
 
-\subsectiontitle{Refereed Publications \footnote{\hspace{.1cm} \textdagger \hspace{.1cm}
-Denotes equal contribution.}}
+\subsectiontitle{Refereed Publications}
 % \normalfont{(\textsuperscript{\textdagger} Denotes equal contribution})}
 \printbibliography[keyword=refereed, heading=none]

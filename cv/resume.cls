@@ -147,19 +147,24 @@
 % http://www.hansenlab.org/cv_bibliography_tex
 \renewcommand*{\mkbibnamegiven}[1]{
    \ifitemannotation{highlight}
-   {\underline{\textbf{#1}}}
+   % {\underline{\textbf{#1}}}
+   {\textbf{#1}}
    {#1}
 }
 
 \renewcommand*{\mkbibnamefamily}[1]{
    \ifitemannotation{highlight}
-     {\underline{\textbf{#1}}}
+     % {\underline{\textbf{#1}}}
+     {\textbf{#1}}
      {#1}%
    % \ifitemannotation{first}
    %   {\textsuperscript{*}}
    %   {}%
    \ifitemannotation{equal}
      {\textsuperscript{\textdagger}}
+     {}%
+   \ifitemannotation{corresponding}
+     {\textsuperscript{*}}
      {}%
 }%%
 
