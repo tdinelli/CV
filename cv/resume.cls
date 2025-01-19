@@ -8,8 +8,9 @@
 
 % Load necessary packages
 \RequirePackage[T1]{fontenc}
-\RequirePackage{helvet}
 \RequirePackage[utf8]{inputenc}
+\usepackage{tgheros}
+
 \RequirePackage[margin=1in]{geometry}
 \RequirePackage{amsmath, amssymb}
 \RequirePackage[dvipsnames]{xcolor}
@@ -50,7 +51,7 @@
    \begin{tcolorbox}[
       colback=gray!20,
       colframe=black,
-      boxrule=1pt,
+      boxrule=.5pt,
       width=\textwidth,
       arc=0mm,
       sharp corners,   % Added to ensure rectangular shape
@@ -143,8 +144,7 @@
 \rfoot{\small\thepage/\pageref*{LastPage}}
 
 % Bibliography name highlighting
-% See here:
-% http://www.hansenlab.org/cv_bibliography_tex
+% See here: http://www.hansenlab.org/cv_bibliography_tex
 \renewcommand*{\mkbibnamegiven}[1]{
    \ifitemannotation{highlight}
    % {\underline{\textbf{#1}}}
@@ -157,9 +157,6 @@
      % {\underline{\textbf{#1}}}
      {\textbf{#1}}
      {#1}%
-   % \ifitemannotation{first}
-   %   {\textsuperscript{*}}
-   %   {}%
    \ifitemannotation{equal}
      {\textsuperscript{\textdagger}}
      {}%

@@ -7,11 +7,16 @@ SUBDIRS = sections
 
 # Latexmk configuration
 LATEXMK = latexmk
-LATEXMK_FLAGS = -lualatex -bibtex -shell-escape -interaction=nonstopmode -file-line-error
+LATEXMK_FLAGS = -lualatex \
+				-bibtex \
+				-shell-escape \
+				-interaction=nonstopmode \
+				-file-line-error
 LATEXMK_OUTDIR = -output-directory=$(BUILD_DIR)
 
 # ==================================================================
 # =============== MODIFY BELOW JUST IF YOU KNOW WHAT YOU ARE DOING =
+# ==================================================================
 
 # ==================================================================
 # OS detection
@@ -60,6 +65,7 @@ $(BUILD_DIR)/$(MAIN).pdf: | create_dirs
 # Clean all generated files
 clean:
 	$(RM) -rf $(BUILD_DIR)
+	$(RM) -rf $(MAIN).pdf
 
 # ==================================================================
 # Clean auxiliary files but keep PDF
