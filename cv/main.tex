@@ -14,64 +14,75 @@
 \newif\ifshowauth
 % \showauthtrue  % Uncomment to show authorizations
 
+%%%%%%%%%%%%%%%%%%%
+%%% Begin Document
+%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
+%%%%%%%%%%%%%%%%%%%
 % Header Section
+%%%%%%%%%%%%%%%%%%%
 \name{\myname}
 
+%%%%%%%%%%%%%%%%%%%
 % Main Content
+%%%%%%%%%%%%%%%%%%%
 \sectiontitle{Contact Information}
-\include{sections/GeneralContacts}
-
-\sectiontitle{Experiences}
-\include{sections/Experiences}
-
-\sectiontitle{Education}
-\include{sections/Education}
+\input{sections/GeneralContacts}
 
 \sectiontitle{Research Interests}
-\include{sections/ResearchInterests}
+\input{sections/ResearchInterests}
 
+\sectiontitle{Experiences}
+\input{sections/Experiences}
+
+\sectiontitle{Education}
+\input{sections/Education}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Publications Section (Conditional)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifshowpubs
     % \newpage
     \sectiontitle{Publications}
     {\large \bf \textdagger} Denotes equal contribution. {\large \bf *} Denotes corresponding author.
-    \include{sections/Publications}
+    \input{sections/Publications}
 \fi
 
-% Professional Informations
 \sectiontitle{Conferences and Presentations}
-\include{sections/Talks}
+\input{sections/Talks}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Professional Informations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \sectiontitle{Professional Activities, Outreach, and Service}
-\include{sections/Activities}
+\input{sections/Activities}
 
 % Awards Section
 \sectiontitle{Honors and Awards}
-\begin{inline_entry}{Travel student fellowship. KAUST.}
-	Jeddah, Saudi Arabia \hfill 2023
-\end{inline_entry}
-\begin{inline_entry}{PhD scholarship. Italian Ministry of Education (MIUR).}
-	Milano, Italy \hfill 2021
-\end{inline_entry}
+    \begin{inline_entry}{Travel student fellowship. KAUST.}
+        Jeddah, Saudi Arabia \hfill 2023
+    \end{inline_entry}
+    \begin{inline_entry}{PhD scholarship. Italian Ministry of Education (MIUR).}
+        Milano, Italy \hfill 2021
+    \end{inline_entry}
 
 % Academic Experience
 \sectiontitle{Teaching}
-\include{sections/Teaching}
+\input{sections/Teaching}
 
 \sectiontitle{Mentoring/Supervision}  % Fixed spacing around slash
-\include{sections/MentoringSupervision}
+\input{sections/MentoringSupervision}
 
 % Skills and Contact Information
 \sectiontitle{Computer Skills}
-\include{sections/Computer}
+\input{sections/Computer}
 
 \sectiontitle{Additional Contact Links}
-\include{sections/ContactLinks}
+\input{sections/ContactLinks}
 
 \sectiontitle{References}
-\include{sections/References}
+\input{sections/References}
 
 % Authorizations Section (Conditional)
 \ifshowauth
