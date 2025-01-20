@@ -1,3 +1,7 @@
+# TODO: Think if its the case to abstract all the commands and make
+# them OS indipendent like what we have at the moment for RM and open
+# but for all of them (missing cd, mkdir, cmissing cd, mkdir, cpp)
+
 # Main variables
 MAIN = main
 BUILD_DIR = build
@@ -32,7 +36,7 @@ endif
 
 # ==================================================================
 # Definition of the remove command based on the OS
-RM = $(if $(filter $(OS_TYPE),Windows),del /f /q ,rm)
+RM = $(if $(filter $(OS_TYPE),Windows),del /f /q ,rm -rf)
 
 # ==================================================================
 # TODO: Automatic files extraction using wildcard
@@ -64,8 +68,8 @@ $(BUILD_DIR)/$(MAIN).pdf: | create_dirs
 # ==================================================================
 # Clean all generated files
 clean:
-	$(RM) -rf $(BUILD_DIR)
-	$(RM) -rf $(MAIN).pdf
+	$(RM) $(BUILD_DIR)
+	$(RM) $(MAIN).pdf
 
 # ==================================================================
 # Clean auxiliary files but keep PDF

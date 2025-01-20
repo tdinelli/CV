@@ -9,7 +9,7 @@
 % Load necessary packages
 \RequirePackage[T1]{fontenc}
 \RequirePackage[utf8]{inputenc}
-\usepackage{tgheros}
+\RequirePackage{tgheros}
 
 \RequirePackage[margin=1in]{geometry}
 \RequirePackage{amsmath, amssymb}
