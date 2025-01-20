@@ -6,6 +6,3 @@ This repository contains my Curriculum Vitae. The template is my own, inspired b
 mainly:
 - https://github.com/duetosymmetry/cv
 - https://ctan.org/pkg/res?lang=en
-
-To see an example:
-- https://tdinelli.github.io/static/cv.pdf
