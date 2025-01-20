@@ -11,14 +11,15 @@ LATEXMK_FLAGS = -lualatex \
                 -interaction=nonstopmode \
                 -file-line-error
 
+# ==================================================================
+# =============== MODIFY BELOW JUST IF YOU KNOW WHAT YOU ARE DOING =
+# ==================================================================
+
+# ==================================================================
 # Source files
 TEXSRC = $(wildcard *.tex)
 BIBSRC = $(wildcard *.bib)
 SECTIONSRC = $(wildcard $(SECTIONS_DIR)/*.tex)
-
-# ==================================================================
-# =============== MODIFY BELOW JUST IF YOU KNOW WHAT YOU ARE DOING =
-# ==================================================================
 
 # ==================================================================
 # OS detection
