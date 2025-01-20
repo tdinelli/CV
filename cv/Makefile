@@ -1,22 +1,20 @@
-# TODO: Think if its the case to abstract all the commands and make
-# them OS indipendent like what we have at the moment for RM and open
-# but for all of them (missing cd, mkdir, cmissing cd, mkdir, cpp)
-
 # Main variables
 MAIN = main
 BUILD_DIR = build
-
-# Create directory structure matching the source
-SUBDIRS = sections
+SECTIONS_DIR = sections
 
 # Latexmk configuration
 LATEXMK = latexmk
 LATEXMK_FLAGS = -lualatex \
-				-bibtex \
-				-shell-escape \
-				-interaction=nonstopmode \
-				-file-line-error
-LATEXMK_OUTDIR = -output-directory=$(BUILD_DIR)
+                -bibtex \
+                -shell-escape \
+                -interaction=nonstopmode \
+                -file-line-error
+
+# Source files
+TEXSRC = $(wildcard *.tex)
+BIBSRC = $(wildcard *.bib)
+SECTIONSRC = $(wildcard $(SECTIONS_DIR)/*.tex)
 
 # ==================================================================
 # =============== MODIFY BELOW JUST IF YOU KNOW WHAT YOU ARE DOING =
@@ -39,17 +37,6 @@ endif
 RM = $(if $(filter $(OS_TYPE),Windows),del /f /q ,rm -rf)
 
 # ==================================================================
-# TODO: Automatic files extraction using wildcard
-# TEXSRC = $(wildcard $(SRC_DIR)/*.tex)
-# BIBSRC = $(wildcard $(BIB_DIR)/*.bib)
-# SECTIONSRC = $(wildcard $(SECTION_DIR)/*.tex)
-# If the BIBSRC is not empty, then we need to generate the
-# bbl database
-# ifneq ($(strip $(BIBSRC)),)
-#     BBLSRC = $(BUILD_DIR)/$(TARGET).bbl
-# endif
-
-# ==================================================================
 # Default target
 all: create_dirs $(BUILD_DIR)/$(MAIN).pdf
 
@@ -57,12 +44,12 @@ all: create_dirs $(BUILD_DIR)/$(MAIN).pdf
 # Create necessary build subdirectories
 create_dirs:
 	mkdir -p $(BUILD_DIR)
-	cd $(BUILD_DIR) && mkdir -p $(SUBDIRS)
+	cd $(BUILD_DIR) && mkdir -p $(SECTIONS_DIR)
 
 # ==================================================================
 # Main compilation rule
-$(BUILD_DIR)/$(MAIN).pdf: | create_dirs
-	$(LATEXMK) $(LATEXMK_FLAGS) $(LATEXMK_OUTDIR) $(MAIN)
+$(BUILD_DIR)/%.pdf: %.tex $(SECTIONSRC) | create_dirs
+	$(LATEXMK) $(LATEXMK_FLAGS) -output-directory=$(BUILD_DIR)
 	cp $(BUILD_DIR)/$(MAIN).pdf .
 
 # ==================================================================
@@ -74,7 +61,7 @@ clean:
 # ==================================================================
 # Clean auxiliary files but keep PDF
 clean-aux:
-	$(LATEXMK) -c $(LATEXMK_OUTDIR) $(MAIN)
+	$(LATEXMK) -c -output-directory=$(BUILD_DIR) $(MAIN)
 
 # ==================================================================
 # View PDF
@@ -93,6 +80,6 @@ endif
 # ==================================================================
 # Watch for changes and recompile
 watch:
-	$(LATEXMK) $(LATEXMK_FLAGS) $(LATEXMK_OUTDIR) -pvc $(MAIN)
+	$(LATEXMK) $(LATEXMK_FLAGS) -output-directory=$(BUILD_DIR) -pvc $(MAIN)
 
-.PHONY: all clean clean-aux view watch create_dirs
+.PHONY: all clean clean-aux open watch create_dirs

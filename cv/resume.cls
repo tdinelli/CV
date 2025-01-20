@@ -8,11 +8,17 @@
 
 % Load necessary packages
 \RequirePackage[T1]{fontenc}
+\RequirePackage[
+    usefilenames,
+    RMstyle=ExtraLight,
+    SSstyle=Light,
+    TTstyle=Light,
+    DefaultFeatures={Ligatures=Common}
+]{plex-otf}
 \RequirePackage[utf8]{inputenc}
-\RequirePackage{tgheros}
+% \RequirePackage{tgheros}
 
 \RequirePackage[margin=1in]{geometry}
-\RequirePackage{amsmath, amssymb}
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage[
    colorlinks=true,
@@ -26,7 +32,6 @@
 \RequirePackage[shortlabels]{enumitem}
 \RequirePackage{titlesec}
 \RequirePackage{parskip}
-\RequirePackage{graphicx}
 \RequirePackage{etaremune}
 \RequirePackage[style=iso]{datetime2}
 \RequirePackage{lastpage}
@@ -34,7 +39,7 @@
 \RequirePackage{soul}
 \RequirePackage{microtype}
 \RequirePackage{ragged2e}
-\usepackage[most]{tcolorbox}
+\RequirePackage[most]{tcolorbox}
 
 % Bibliography setup
 \RequirePackage[
