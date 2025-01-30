@@ -8,26 +8,18 @@
 
 % Load necessary packages
 \RequirePackage[T1]{fontenc}
-\RequirePackage[
-    usefilenames,
-    RMstyle=ExtraLight,
-    SSstyle=Light,
-    TTstyle=Light,
-    DefaultFeatures={Ligatures=Common}
-]{plex-otf}
-\RequirePackage[utf8]{inputenc}
-% \RequirePackage{tgheros}
+\RequirePackage[default,light,bold]{sourceserifpro}
 
 \RequirePackage[margin=1in]{geometry}
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage[
-   colorlinks=true,
-   linkcolor=PineGreen,
-   linkbordercolor=PineGreen,
-   filecolor=magenta,
-   urlcolor=PineGreen,
-   urlbordercolor=PineGreen,
-   citecolor=blue
+    colorlinks=true,
+    linkcolor=PineGreen,
+    linkbordercolor=PineGreen,
+    filecolor=magenta,
+    urlcolor=PineGreen,
+    urlbordercolor=PineGreen,
+    citecolor=blue
 ]{hyperref}
 \RequirePackage[shortlabels]{enumitem}
 \RequirePackage{titlesec}
@@ -53,43 +45,43 @@
 
 % Create a command for the boxed title
 \newcommand{\boxedsection}[1]{%
-   \begin{tcolorbox}[
-      colback=gray!20,
-      colframe=black,
-      boxrule=.5pt,
-      width=\textwidth,
-      arc=0mm,
-      sharp corners,   % Added to ensure rectangular shape
-      top=1.3pt,         % Reduced top padding
-      bottom=1.3pt,      % Reduced bottom padding
-      right=0pt,
-      left=0pt,
-   ]
-   \textbf{#1}
-   \end{tcolorbox}%
+    \begin{tcolorbox}[
+            colback=gray!20,
+            colframe=black,
+            boxrule=.5pt,
+            width=\textwidth,
+            arc=0mm,
+            sharp corners,   % Added to ensure rectangular shape
+            top=1.3pt,         % Reduced top padding
+            bottom=1.3pt,      % Reduced bottom padding
+            right=0pt,
+            left=0pt,
+        ]
+        \textbf{#1}
+    \end{tcolorbox}%
 }
 % Format section titles
 \titleformat{\section}
-   {\large}
-   {}
-   {0em}
-   {\boxedsection}
+{\large}
+{}
+{0em}
+{\boxedsection}
 
 \titlespacing{\section}
-   {0pt}    % Left margin
-   {-3.ex}  % Space before
-   {-4.ex}  % Space after
+{0pt}    % Left margin
+{-3.ex}  % Space before
+{-4.ex}  % Space after
 
 % Subsection formatting
 \titleformat{\subsection}
-    {\large\bfseries\raggedright}
-    {}{0em}
-    {}
+{\large\bfseries\raggedright}
+{}{0em}
+{}
 
 \titlespacing*{\subsection}
-    {0pt}
-    {1.25ex plus .5ex minus .2ex}
-    {.75ex plus .1ex}
+{0pt}
+{1.25ex plus .5ex minus .2ex}
+{.75ex plus .1ex}
 
 % Define custom commands
 \newcommand{\name}[1]{%
@@ -151,30 +143,30 @@
 % Bibliography name highlighting
 % See here: http://www.hansenlab.org/cv_bibliography_tex
 \renewcommand*{\mkbibnamegiven}[1]{
-   \ifitemannotation{highlight}
-   % {\underline{\textbf{#1}}}
-   {\textbf{#1}}
-   {#1}
+    \ifitemannotation{highlight}
+    % {\underline{\textbf{#1}}}
+    {\textbf{#1}}
+    {#1}
 }
 
 \renewcommand*{\mkbibnamefamily}[1]{
-   \ifitemannotation{highlight}
-     % {\underline{\textbf{#1}}}
-     {\textbf{#1}}
-     {#1}%
-   \ifitemannotation{equal}
-     {\textsuperscript{\textdagger}}
-     {}%
-   \ifitemannotation{corresponding}
-     {\textsuperscript{*}}
-     {}%
+    \ifitemannotation{highlight}
+    % {\underline{\textbf{#1}}}
+    {\textbf{#1}}
+    {#1}%
+    \ifitemannotation{equal}
+    {{\large \textsuperscript{\textdagger}}}
+    {}%
+    \ifitemannotation{corresponding}
+    {\textsuperscript{*}}
+    {}%
 }%%
 
 % Bibliography environment
 \defbibenvironment{bibliography}
-    {\renewcommand\labelenumi{\theenumi.}%
-     \begin{etaremune}[leftmargin=2em]}
-    {\end{etaremune}}
-    {\item}
+{\renewcommand\labelenumi{\theenumi.}%
+    \begin{etaremune}[leftmargin=2em]}
+        {\end{etaremune}}
+{\item}
 
 \endinput

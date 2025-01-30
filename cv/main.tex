@@ -1,100 +1,111 @@
 \documentclass{resume}
 
-% Personal Information Constants
 \newcommand{\myname}{Timoteo Dinelli}
 \newcommand{\polimi}{Politecnico di Milano}
 
-% Bibliography Setup
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Bibliography Setup
 \addbibresource{publications.bib}
 
-% Toggle Definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Toggle Definitions
 \newif\ifshowpubs
 \showpubstrue  % Comment to hide publications
-
 \newif\ifshowauth
 % \showauthtrue  % Uncomment to show authorizations
 
-%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Begin Document
-%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-%%%%%%%%%%%%%%%%%%%
-% Header Section
-%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Header Section
 \name{\myname}
 
-%%%%%%%%%%%%%%%%%%%
-% Main Content
-%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Main Content
 \sectiontitle{Contact Information}
 \input{sections/GeneralContacts}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Research Interests
 \sectiontitle{Research Interests}
 \input{sections/ResearchInterests}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Experiences
 \sectiontitle{Experiences}
 \input{sections/Experiences}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Education
 \sectiontitle{Education}
 \input{sections/Education}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Publications Section (Conditional)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Publications Section (Conditional)
 \ifshowpubs
-    % \newpage
     \sectiontitle{Publications}
-    {\large \bf \textdagger} Denotes equal contribution. {\large \bf *} Denotes corresponding author.
+    % {\large \bf \textdagger} Denotes equal contribution. {\large \bf *} Denotes corresponding author.
     \input{sections/Publications}
 \fi
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Talks
 \sectiontitle{Conferences and Presentations}
 \input{sections/Talks}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Professional Informations
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Professional Informations
 \sectiontitle{Professional Activities, Outreach, and Service}
 \input{sections/Activities}
 
-% Awards Section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Awards Section
 \sectiontitle{Honors and Awards}
-    \begin{inline_entry}{Travel student fellowship. KAUST.}
-        Jeddah, Saudi Arabia \hfill 2023
-    \end{inline_entry}
-    \begin{inline_entry}{PhD scholarship. Italian Ministry of Education (MIUR).}
-        Milano, Italy \hfill 2021
-    \end{inline_entry}
+\begin{inline_entry}{Travel student fellowship. KAUST.}
+    Jeddah, Saudi Arabia \hfill 2023
+\end{inline_entry}
+\begin{inline_entry}{PhD scholarship. Italian Ministry of Education (MIUR).}
+    Milano, Italy \hfill 2021
+\end{inline_entry}
 
-% Academic Experience
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Academic Experience
 \sectiontitle{Teaching}
 \input{sections/Teaching}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Mentoring
 \sectiontitle{Mentoring/Supervision}  % Fixed spacing around slash
 \input{sections/MentoringSupervision}
 
-% Skills and Contact Information
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Skills and Contact Information
 \sectiontitle{Computer Skills}
 \input{sections/Computer}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Other Links
 \sectiontitle{Additional Contact Links}
 \input{sections/ContactLinks}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% References
 \sectiontitle{References}
 \input{sections/References}
 
-% Authorizations Section (Conditional)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Authorizations Section (Conditional)
 \ifshowauth
-    % \newpage
     \sectiontitle{Authorizations}
     \begin{enumerate}
         \item Autorizzo al trattamento dati ai sensi del GDPR 2016/679 del 27 aprile 2016
-            (Regolamento Europeo relativo alla protezione delle persone fisiche per
-            quanto riguarda il trattamento dei dati personali);
+              (Regolamento Europeo relativo alla protezione delle persone fisiche per
+              quanto riguarda il trattamento dei dati personali);
         \item Autorizzo la pubblicazione del Curriculum Vitae sul sito istituzionale del
-            Politecnico di Milano (sez. Amministrazione Trasparente) in ottemperanza al
-            D. Lgs n. 33 del 14 marzo 2013 (e s.m.i.).
+              Politecnico di Milano (sez. Amministrazione Trasparente) in ottemperanza al
+              D. Lgs n. 33 del 14 marzo 2013 (e s.m.i.).
     \end{enumerate}
 \fi
 
