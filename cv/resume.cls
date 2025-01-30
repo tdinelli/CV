@@ -13,8 +13,8 @@
     RMstyle=ExtraLight,
     SSstyle=Light,
     TTstyle=Light,
-    DefaultFeatures={Ligatures=Common}
 ]{plex-otf}
+% DefaultFeatures={Ligatures=Common}
 \RequirePackage[utf8]{inputenc}
 % \RequirePackage{tgheros}
 
