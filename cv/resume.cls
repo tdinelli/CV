@@ -7,11 +7,11 @@
 \LoadClass[a4paper,10pt]{article}  % Use article class with A4 paper and 10pt font
 
 % Required packages and their purposes
-\RequirePackage[T1]{fontenc}                % Enhanced font encoding support
+\RequirePackage[T1]{fontenc}           % Enhanced font encoding support
 \RequirePackage[default,light,bold]{sourceserifpro}  % Source Serif Pro font
-\RequirePackage[margin=1in]{geometry}       % Page margin settings
-\RequirePackage[dvipsnames]{xcolor}         % Extended color support
-\RequirePackage[                            % Hyperlink configuration
+\RequirePackage[margin=1in]{geometry}  % Page margin settings
+\RequirePackage[dvipsnames]{xcolor}    % Extended color support
+\RequirePackage[                       % Hyperlink configuration
     colorlinks=true,
     linkcolor=PineGreen,
     linkbordercolor=PineGreen,
@@ -20,49 +20,49 @@
     urlbordercolor=PineGreen,
     citecolor=blue
 ]{hyperref}
-\RequirePackage[shortlabels]{enumitem}      % Enhanced list environments
-\RequirePackage{titlesec}                   % Section title formatting
-\RequirePackage{parskip}                    % Paragraph spacing
-\RequirePackage{etaremune}                  % Reverse enumeration
-\RequirePackage[style=iso]{datetime2}       % Date formatting
-\RequirePackage{lastpage}                   % For last page reference
-\RequirePackage{fancyhdr}                   % Header and footer customization
-\RequirePackage{soul}                       % Text highlighting and underlining
-\RequirePackage{microtype}                  % Typography enhancements
-\RequirePackage{ragged2e}                   % Text alignment
-\RequirePackage[most]{tcolorbox}            % Colored boxes for sections
+\RequirePackage[shortlabels]{enumitem}  % Enhanced list environments
+\RequirePackage{titlesec}               % Section title formatting
+\RequirePackage{parskip}                % Paragraph spacing
+\RequirePackage{etaremune}              % Reverse enumeration
+\RequirePackage[style=iso]{datetime2}   % Date formatting
+\RequirePackage{lastpage}               % For last page reference
+\RequirePackage{fancyhdr}               % Header and footer customization
+\RequirePackage{soul}                   % Text highlighting and underlining
+\RequirePackage{microtype}              % Typography enhancements
+\RequirePackage{ragged2e}               % Text alignment
+\RequirePackage[most]{tcolorbox}        % Colored boxes for sections
 
 % Bibliography configuration
 \RequirePackage[
-    backend=biber,                          % Use biber backend
-    sorting=ydnt,                           % Year-descending sorting
-    url=false,                              % Don't show URLs
-    maxbibnames=99,                         % Show all author names
-    defernumbers=true,                      % Automatic numbering
-    style=numeric-comp                      % Numeric citation style
+    backend=biber,                      % Use biber backend
+    sorting=ydnt,                       % Year-descending sorting
+    url=false,                          % Don't show URLs
+    maxbibnames=99,                     % Show all author names
+    defernumbers=true,                  % Automatic numbering
+    style=numeric-comp                  % Numeric citation style
 ]{biblatex}
 
 % Remove "In:" prefix and ISSN from bibliography entries
 \renewbibmacro{in:}{}
 \DeclareSourcemap{
-  \maps[datatype=bibtex]{
-    \map{
-      \step[fieldset=issn, null]
+    \maps[datatype=bibtex]{
+        \map{
+            \step[fieldset=issn, null]
+        }
     }
-  }
 }
 
 % Custom section formatting with boxes
 \newcommand{\boxedsection}[1]{%
     \begin{tcolorbox}[
-            colback=gray!20,                % Box background color
-            colframe=black,                 % Box frame color
-            boxrule=.5pt,                   % Frame thickness
-            width=\textwidth,               % Full width
-            arc=0mm,                        % No rounded corners
-            sharp corners,                  % Ensure rectangular shape
-            top=1.3pt,                      % Top padding
-            bottom=1.3pt,                   % Bottom padding
+            colback=gray!20,   % Box background color
+            colframe=black,    % Box frame color
+            boxrule=.5pt,      % Frame thickness
+            width=\textwidth,  % Full width
+            arc=0mm,           % No rounded corners
+            sharp corners,     % Ensure rectangular shape
+            top=1.3pt,         % Top padding
+            bottom=1.3pt,      % Bottom padding
             right=0pt,
             left=0pt,
         ]
@@ -71,17 +71,17 @@
 }
 
 % Section and subsection formatting
-\titleformat{\section}                      % Section format
+\titleformat{\section}     % Section format
 {\large}
 {}
 {0em}
 {\boxedsection}
 \titlespacing{\section}
-{0pt}                                      % Left margin
-{-3.ex}                                    % Space before
-{-4.ex}                                    % Space after
+{0pt}                      % Left margin
+{-3.ex}                    % Space before
+{-4.ex}                    % Space after
 
-\titleformat{\subsection}                   % Subsection format
+\titleformat{\subsection}  % Subsection format
 {\large\bfseries\raggedright}
 {}{0em}
 {}
