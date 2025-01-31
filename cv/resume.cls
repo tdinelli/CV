@@ -1,18 +1,17 @@
 % resume.cls
-% LaTeX file defining the structure of the resume
+% LaTeX class file for creating professional CVs/resumes
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{resume}[2024/12/16 v1.1 LaTeX class for CVs]
 
-% Load the base class with A4 paper size and 10pt font
-\LoadClass[a4paper,10pt]{article}
+% Base class configuration
+\LoadClass[a4paper,10pt]{article}  % Use article class with A4 paper and 10pt font
 
-% Load necessary packages
-\RequirePackage[T1]{fontenc}
-\RequirePackage[default,light,bold]{sourceserifpro}
-
-\RequirePackage[margin=1in]{geometry}
-\RequirePackage[dvipsnames]{xcolor}
-\RequirePackage[
+% Required packages and their purposes
+\RequirePackage[T1]{fontenc}                % Enhanced font encoding support
+\RequirePackage[default,light,bold]{sourceserifpro}  % Source Serif Pro font
+\RequirePackage[margin=1in]{geometry}       % Page margin settings
+\RequirePackage[dvipsnames]{xcolor}         % Extended color support
+\RequirePackage[                            % Hyperlink configuration
     colorlinks=true,
     linkcolor=PineGreen,
     linkbordercolor=PineGreen,
@@ -21,89 +20,94 @@
     urlbordercolor=PineGreen,
     citecolor=blue
 ]{hyperref}
-\RequirePackage[shortlabels]{enumitem}
-\RequirePackage{titlesec}
-\RequirePackage{parskip}
-\RequirePackage{etaremune}
-\RequirePackage[style=iso]{datetime2}
-\RequirePackage{lastpage}
-\RequirePackage{fancyhdr}
-\RequirePackage{soul}
-\RequirePackage{microtype}
-\RequirePackage{ragged2e}
-\RequirePackage[most]{tcolorbox}
+\RequirePackage[shortlabels]{enumitem}      % Enhanced list environments
+\RequirePackage{titlesec}                   % Section title formatting
+\RequirePackage{parskip}                    % Paragraph spacing
+\RequirePackage{etaremune}                  % Reverse enumeration
+\RequirePackage[style=iso]{datetime2}       % Date formatting
+\RequirePackage{lastpage}                   % For last page reference
+\RequirePackage{fancyhdr}                   % Header and footer customization
+\RequirePackage{soul}                       % Text highlighting and underlining
+\RequirePackage{microtype}                  % Typography enhancements
+\RequirePackage{ragged2e}                   % Text alignment
+\RequirePackage[most]{tcolorbox}            % Colored boxes for sections
 
-% Bibliography setup
+% Bibliography configuration
 \RequirePackage[
-    backend=biber,
-    sorting=ydnt,
-    url=false,
-    maxbibnames=99,
-    defernumbers=true,
-    style=numeric-comp
+    backend=biber,                          % Use biber backend
+    sorting=ydnt,                           % Year-descending sorting
+    url=false,                              % Don't show URLs
+    maxbibnames=99,                         % Show all author names
+    defernumbers=true,                      % Automatic numbering
+    style=numeric-comp                      % Numeric citation style
 ]{biblatex}
 
-% Create a command for the boxed title
+% Remove "In:" prefix and ISSN from bibliography entries
+\renewbibmacro{in:}{}
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \step[fieldset=issn, null]
+    }
+  }
+}
+
+% Custom section formatting with boxes
 \newcommand{\boxedsection}[1]{%
     \begin{tcolorbox}[
-            colback=gray!20,
-            colframe=black,
-            boxrule=.5pt,
-            width=\textwidth,
-            arc=0mm,
-            sharp corners,   % Added to ensure rectangular shape
-            top=1.3pt,         % Reduced top padding
-            bottom=1.3pt,      % Reduced bottom padding
+            colback=gray!20,                % Box background color
+            colframe=black,                 % Box frame color
+            boxrule=.5pt,                   % Frame thickness
+            width=\textwidth,               % Full width
+            arc=0mm,                        % No rounded corners
+            sharp corners,                  % Ensure rectangular shape
+            top=1.3pt,                      % Top padding
+            bottom=1.3pt,                   % Bottom padding
             right=0pt,
             left=0pt,
         ]
         \textbf{#1}
     \end{tcolorbox}%
 }
-% Format section titles
-\titleformat{\section}
+
+% Section and subsection formatting
+\titleformat{\section}                      % Section format
 {\large}
 {}
 {0em}
 {\boxedsection}
-
 \titlespacing{\section}
-{0pt}    % Left margin
-{-3.ex}  % Space before
-{-4.ex}  % Space after
+{0pt}                                      % Left margin
+{-3.ex}                                    % Space before
+{-4.ex}                                    % Space after
 
-% Subsection formatting
-\titleformat{\subsection}
+\titleformat{\subsection}                   % Subsection format
 {\large\bfseries\raggedright}
 {}{0em}
 {}
-
 \titlespacing*{\subsection}
 {0pt}
 {1.25ex plus .5ex minus .2ex}
 {.75ex plus .1ex}
 
-% Define custom commands
-\newcommand{\name}[1]{%
+% Custom commands for CV elements
+\newcommand{\name}[1]{%                     % Name formatting
     \begingroup
-    % \centering
     {\Huge\scshape \textbf{#1}\par}
     \vspace{1em}
     \endgroup
 }
 
-% Section title command
+% Section and subsection title commands
 \newcommand{\sectiontitle}[1]{%
     \section*{#1}
 }
-
-% Subsection title command
 \newcommand{\subsectiontitle}[1]{%
     \subsection*{#1}
 }
 
-% Entry environments
-\newenvironment{entry}[1]{%
+% Entry environment definitions for CV items
+\newenvironment{entry}[1]{%                 % Basic entry
     \par\noindent
     \textbf{#1}
     \vspace{0.5em}\par
@@ -111,21 +115,21 @@
     \vspace{0.15em}
 }
 
-\newenvironment{inline_entry}[1]{%
+\newenvironment{inline_entry}[1]{%          % Inline entry
     \par\noindent
     \textbf{#1}
 }{%
     \vspace{0.15em}
 }
 
-\newenvironment{position_simple}[2]{%
+\newenvironment{position_simple}[2]{%       % Simple position entry
     \par\noindent
     \textbf{#1}, \textit{#2}\par
 }{%
     \vspace{0.15em}
 }
 
-\newenvironment{position}[3]{%
+\newenvironment{position}[3]{%              % Detailed position entry
     \par\noindent
     \textbf{#1}, \textit{#2}\hfill\textbf{#3}
     \vspace{0.05em}\par
@@ -133,25 +137,22 @@
     \vspace{0.5em}
 }
 
-% Header and footer setup
+% Header and footer configuration
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
 \lfoot{\small\textit{Curriculum Vitae of Timoteo Dinelli --- \today}}
 \rfoot{\small\thepage/\pageref*{LastPage}}
 
-% Bibliography name highlighting
-% See here: http://www.hansenlab.org/cv_bibliography_tex
-\renewcommand*{\mkbibnamegiven}[1]{
+% Bibliography name formatting
+\renewcommand*{\mkbibnamegiven}[1]{         % Format given names
     \ifitemannotation{highlight}
-    % {\underline{\textbf{#1}}}
     {\textbf{#1}}
     {#1}
 }
 
-\renewcommand*{\mkbibnamefamily}[1]{
+\renewcommand*{\mkbibnamefamily}[1]{        % Format family names
     \ifitemannotation{highlight}
-    % {\underline{\textbf{#1}}}
     {\textbf{#1}}
     {#1}%
     \ifitemannotation{equal}
@@ -160,12 +161,12 @@
     \ifitemannotation{corresponding}
     {\textsuperscript{*}}
     {}%
-}%%
+}
 
-% Bibliography environment
+% Bibliography environment configuration
 \defbibenvironment{bibliography}
 {\renewcommand\labelenumi{\theenumi.}%
-    \begin{etaremune}[leftmargin=2em]}
+    \begin{etaremune}[leftmargin=2em]}      % Reverse numbered list
         {\end{etaremune}}
 {\item}
 
