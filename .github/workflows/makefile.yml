@@ -27,6 +27,7 @@ jobs:
     - name: Install Source Serif Pro
       run: |
         sudo tlmgr init-usertree
+        sudo tlmgr update --self
         sudo tlmgr install sourceserifpro
 
     - name: Compile LaTeX document
