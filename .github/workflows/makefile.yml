@@ -26,9 +26,7 @@ jobs:
 
     - name: Install Source Serif Pro
       run: |
-        sudo tlmgr init-usertree
-        sudo tlmgr update --self
-        sudo tlmgr install sourceserifpro
+        sudo apt-get install -y texlive-fonts-extra
 
     - name: Compile LaTeX document
       run: |
