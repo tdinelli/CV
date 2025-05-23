@@ -8,7 +8,7 @@
 
 % Required packages and their purposes
 \RequirePackage[T1]{fontenc}           % Enhanced font encoding support
-\RequirePackage[default,light,bold]{sourceserifpro}  % Source Serif Pro font
+\RequirePackage[default,light,semibold]{sourceserifpro}  % Source Serif Pro font
 \RequirePackage[margin=1in]{geometry}  % Page margin settings
 \RequirePackage[dvipsnames]{xcolor}    % Extended color support
 \RequirePackage[                       % Hyperlink configuration
