@@ -7,6 +7,9 @@
 \newif\ifshowacceptedpubs
 % \showacceptedpubstrue % Comment out this line to omit the accepted publications list
 
+\newif\ifshowconference
+\showconferencetrue % Comment out this line to omit the accepted publications list
+
 \nocite{*}
 \ifshowpubsummary
     \subsectiontitle{Publication Summary}
@@ -15,9 +18,9 @@
     \end{minipage}%
     \begin{minipage}[t]{0.4\textwidth}
         \begin{flushright}
-            \textbf{Citations:} 40 \\
-            \textbf{h-index:} 2    \\
-            \textbf{i10-index:} 1
+            \textbf{Citations:} 49 \\
+            \textbf{h-index:} 3    \\
+            \textbf{i10-index:} 2
         \end{flushright}
     \end{minipage}
 
@@ -42,5 +45,11 @@
 \else % don't show acceptedpubs
 \fi
 
-\subsectiontitle{Refereed Publications}
+\subsectiontitle{Journal Publications (refereed)}
 \printbibliography[keyword=refereed, heading=none]
+
+\ifshowconference
+    \subsectiontitle{Conference Publications (not---refereed)}
+    \printbibliography[keyword=conference, heading=none]
+\else
+\fi
