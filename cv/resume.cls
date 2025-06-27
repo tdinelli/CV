@@ -100,10 +100,10 @@
 
 % Section and subsection title commands
 \newcommand{\sectiontitle}[1]{%
-    \section*{#1}
+    \section{#1}
 }
 \newcommand{\subsectiontitle}[1]{%
-    \subsection*{#1}
+    \subsection{#1}
 }
 
 % Entry environment definitions for CV items
